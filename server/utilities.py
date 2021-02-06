@@ -27,16 +27,16 @@ import urllib
 
 
 def create_HMAC(shared_key,
-               secret_key,
-               date_header,
-               http_method,
-               requestURL,
-               content_type = None,
-               contentMD5 = None,
-               nepApplicationKey = None,
-               nepCorrelationID = None,
-               nepOrganization = None,
-               nepServiceVersion = None):
+                secret_key,
+                date_header,
+                http_method,
+                requestURL,
+                content_type=None,
+                contentMD5=None,
+                nepApplicationKey=None,
+                nepCorrelationID=None,
+                nepOrganization=None,
+                nepServiceVersion=None):
     toSign = http_method + "\n" + urllib.parse.urlsplit(requestURL).path
     if content_type is not None:
         toSign += "\n" + content_type
@@ -56,16 +56,14 @@ def create_HMAC(shared_key,
     if nepServiceVersion is not None:
         toSign += "\n" + nepServiceVersion
 
-    key = bytes(secret_key + date_header.replace(microsecond=0).strftime("%Y-%m-%dT%H:%M:%S.000Z"), 'utf-8')
+    key = bytes(secret_key + date_header.replace(microsecond=0)
+                .strftime("%Y-%m-%dT%H:%M:%S.000Z"), 'utf-8')
 
     message = bytes(toSign, 'utf-8')
 
-    digest = hmac.new(key, msg=bytes(message), digestmod=hashlib.sha512).digest()
+    digest = hmac.new(key, msg=bytes(message),
+                      digestmod=hashlib.sha512).digest()
 
     signature = base64.b64encode(digest)
 
     return "AccessKey {}:{}".format(shared_key, signature.decode('ascii'))
-
-
-
-
