@@ -6,7 +6,7 @@ Small businesses have suffered during COVID-19. Additionally, people are feeling
 In reality, there are limited virtual interaction opportunities for users and small businesses. Therefore we decided to help small businesses thrive and connect people to their community by designing a mobile application with NCR's APIs.
 ## What it does
 **The Giving App** allows the user to perform contactless opportunity to give back to the community. More specifically, **The Giving App** suggests donations being run by that business after users completing a transaction at a local business. By showing a milestone bar, the user feels a sense of achievement operationalized. Additionally, community crowdfunding can be advertised in a non-invasive way.
-![Image-Project-Overview]()
+![Image-Project-Overview](https://github.com/ngngardner/ugahacks_2021/blob/main/docs/img/overview.png)
 
 ## How we built it
 * ***NCR BSP API*** Technology:
