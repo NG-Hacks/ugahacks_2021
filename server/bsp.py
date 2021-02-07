@@ -46,7 +46,8 @@ def bsp_request_param(url: str, body, method: str, params):
                        method,
                        url,
                        content_type=content_type,
-                       nepOrganization=nep_organization)
+                       nepOrganization=nep_organization,
+                       params=params)
 
     headers = {
         'content-type': content_type,
@@ -57,11 +58,11 @@ def bsp_request_param(url: str, body, method: str, params):
     }
 
     if method == 'POST':
-        resp = requests.post(url, data=body, headers=headers, params=params)
+        resp = requests.post(url+params, data=body, headers=headers)
     elif method == 'PATCH':
-        resp = requests.patch(url, data=body, headers=headers, params=params)
+        resp = requests.patch(url+params, data=body, headers=headers)
     elif method == 'GET':
-        resp = requests.get(url, data=body, headers=headers, params=params)
+        resp = requests.get(url+params, data=body, headers=headers)
     else:
         return None
 

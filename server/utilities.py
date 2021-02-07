@@ -36,8 +36,15 @@ def create_HMAC(shared_key,
                 nepApplicationKey=None,
                 nepCorrelationID=None,
                 nepOrganization=None,
-                nepServiceVersion=None):
-    toSign = http_method + "\n" + urllib.parse.urlsplit(requestURL).path
+                nepServiceVersion=None,
+                params=None):
+
+    if params is not None:
+        toSign = http_method + "\n" + \
+            urllib.parse.urlsplit(requestURL).path + params
+    else:
+        toSign = http_method + "\n" + urllib.parse.urlsplit(requestURL).path
+
     if content_type is not None:
         toSign += "\n" + content_type
 

@@ -105,13 +105,13 @@ def simulate_order(name):
 
 
 def find_order(name=None, reference_id=None):
-    url = f'{order_service}/find?pageSize=1000'
-    # url = f'{order_service}/find'
+    url = f'{order_service}/find'
+    params = '?pageSize=1000'
 
     if not name:
         return "You must specify customer name."
 
-    resp = bsp_request(url, "{}", 'POST')
+    resp = bsp_request_param(url, "{}", 'POST', params=params)
     if resp.status_code != 200:
         return resp
 
