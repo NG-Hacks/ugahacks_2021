@@ -1,14 +1,13 @@
-import 'package:app/HighwayScreen.dart';
-import 'package:app/ScholarshipScreen.dart';
+import 'package:app/ThanksScreen.dart';
 import 'package:flutter/material.dart';
 import 'const.dart';
 
-class DonationPage extends StatefulWidget {
+class HighwayPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _State();
 }
 
-class _State extends State<DonationPage> {
+class _State extends State<HighwayPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,33 +23,20 @@ class _State extends State<DonationPage> {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: AssetImage('assets/img/DonationList.png')))),
+                          image:
+                              AssetImage('assets/img/HighwayDonation.png')))),
               // calendar page
               Positioned(
-                  bottom: 525.0,
-                  left: 10.0,
-                  right: 10.0,
-                  top: 90.0,
+                  bottom: 100.0,
+                  left: 125.0,
+                  right: 125.0,
+                  top: 575.0,
                   child: TextButton(
                     onPressed: () {
                       Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => HighwayPage()));
-                    },
-                    child: Text('', style: TextStyle(fontSize: 15.0)),
-                  )),
-              Positioned(
-                  bottom: 375.0,
-                  left: 10.0,
-                  right: 10.0,
-                  top: 250.0,
-                  child: TextButton(
-                    onPressed: () {
-                      Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (context) => ScholarshipPage()));
+                              builder: (context) => ThanksPage()));
                     },
                     child: Text('', style: TextStyle(fontSize: 15.0)),
                   )),

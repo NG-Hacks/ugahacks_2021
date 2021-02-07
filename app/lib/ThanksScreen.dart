@@ -1,14 +1,13 @@
 import 'package:app/DonationScreen.dart';
-import 'package:app/endpoints.dart';
 import 'package:flutter/material.dart';
 import 'const.dart';
 
-class StartPage extends StatefulWidget {
+class ThanksPage extends StatefulWidget {
   @override
   State<StatefulWidget> createState() => new _State();
 }
 
-class _State extends State<StartPage> {
+class _State extends State<ThanksPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -24,7 +23,7 @@ class _State extends State<StartPage> {
                   decoration: BoxDecoration(
                       image: DecorationImage(
                           fit: BoxFit.fill,
-                          image: AssetImage('assets/img/StartScreen.png')))),
+                          image: AssetImage('assets/img/ThankYou.png')))),
               // calendar page
               Positioned(
                   bottom: 90.0,
