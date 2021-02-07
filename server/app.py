@@ -1,4 +1,6 @@
 
+import json
+
 from flask import Flask, request
 import requests
 
@@ -16,9 +18,12 @@ def create_order():
     """
         POST: create a simulated cart and order
     """
-    resp = simulate_order()
+    data = request.get_json()
+    name = data.get('name', None)
 
-    if resp is not None:
+    resp = simulate_order(name)
+
+    if isinstance(resp, requests.Response):
         err = app.response_class(
             response=f"Error {resp.text}.",
             status=400,
@@ -27,21 +32,25 @@ def create_order():
         return err
 
     return app.response_class(
-        response="Success.",
+        response=json.dumps({"Code": "Success."}),
         status=200,
         mimetype=content_type
     )
 
 
-@app.route('/orders/find', methods=['POST'])
+@ app.route('/orders/find', methods=['POST'])
 def retrieve_order():
     """
-        POST: find an order with matching nanme 
+        POST: find an order with matching nanme
     """
-    resp = find_order()
+    data = request.get_json()
+    name = data.get('name', None)
+    reference_id = data.get('referenceId', None)
+
+    resp = find_order(name, reference_id)
 
     if resp is not None:
-        if isinstance(resp, requests.Respone):
+        if isinstance(resp, requests.Response):
             err = app.response_class(
                 response=f"Error {resp.text}.",
                 status=400,

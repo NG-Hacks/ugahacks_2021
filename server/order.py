@@ -1,11 +1,11 @@
 
 import json
 
-from bsp import bsp_request
+from bsp import bsp_request, bsp_request_param
 from const import order_service, selling_service
 
 
-def simulate_order():
+def simulate_order(name):
     # 1. POST create cart
     resp = bsp_request(selling_service, "{}", 'POST')
     cart_id = resp.headers['Location'].split('/')[2]
@@ -92,10 +92,11 @@ def simulate_order():
         "comments": "Good-Morning",
         "referenceID": cart_id,
         "pickupContact": {
-            "name": "John"
+            "name": f"{name}"
         }
     }
     resp = bsp_request(order_service, json.dumps(body), 'POST')
+    print(resp.json())
 
     if resp.status_code != 200:
         return resp
@@ -103,14 +104,14 @@ def simulate_order():
     return None
 
 
-def find_order():
-    url = f'{order_service}/find'
-    body = {
-        "pickupContact": {
-            "name": "John"
-        }
-    }
-    resp = bsp_request(url, json.dumps(body), 'POST')
+def find_order(name=None, reference_id=None):
+    url = f'{order_service}/find?pageSize=1000'
+    # url = f'{order_service}/find'
+
+    if not name:
+        return "You must specify customer name."
+
+    resp = bsp_request(url, "{}", 'POST')
     if resp.status_code != 200:
         return resp
 
@@ -118,9 +119,20 @@ def find_order():
 
     for d in data:
         try:
+            order_id = d['id']
+            order_url = f'{order_service}/{order_id}'
+            resp = bsp_request(order_url, {}, 'GET')
+            print(resp.status_code)
+            print(resp.json())
+
+            # check if order matches name
+            if resp.json()["pickupContact"]["name"] != name:
+                raise ValueError
+
+            # check if order has a reference id
             d["referenceId"]
             return None
         except:
             pass
 
-    return 'Did not find a matching order.'
+    return json.dumps({'Error:': 'Did not find a matching order.'})

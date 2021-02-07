@@ -38,6 +38,36 @@ def bsp_request(url: str, body, method: str):
     return resp
 
 
+def bsp_request_param(url: str, body, method: str, params):
+    date = datetime.datetime.now(datetime.timezone.utc)
+    auth = create_HMAC(shared_key,
+                       secret_Key,
+                       date,
+                       method,
+                       url,
+                       content_type=content_type,
+                       nepOrganization=nep_organization)
+
+    headers = {
+        'content-type': content_type,
+        'Authorization': auth,
+        'nep-organization': nep_organization,
+        'nep-enterprise-unit': nep_enterprise_unit,
+        'date': bytes(date.replace(microsecond=0).strftime('%a, %d %b %Y %H:%M:%S %Z'), 'utf-8')
+    }
+
+    if method == 'POST':
+        resp = requests.post(url, data=body, headers=headers, params=params)
+    elif method == 'PATCH':
+        resp = requests.patch(url, data=body, headers=headers, params=params)
+    elif method == 'GET':
+        resp = requests.get(url, data=body, headers=headers, params=params)
+    else:
+        return None
+
+    return resp
+
+
 def bsp_request_comment(url: str, body: str, method: str):
     """
         Used when the request payload should have a key of 'comments'.
