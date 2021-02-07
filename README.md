@@ -21,14 +21,13 @@ In reality, there are limited virtual interaction opportunities for users and sm
 
 * Prototyped the application using ***NCR Design Systems in Figma*** with ***Flutter***
 
-* Attended the ui/ux design workshop and used ***Mural*** for our 
-Ideas Brainstorm
+* Attended the UI/UX design workshop and used Mural for our Ideas Brainstorm
 
 ## Challenges we ran into
 
-* Come up the idea that help our communitiies and small bussiness
+* Come up with the idea that helps our communities and small business
 
-* Understad the functionality of NCR's APIs
+* Understand the functionality of NCR's APIs
 
 * Set up HMAC authorization to make API call with python
 
@@ -36,21 +35,21 @@ Ideas Brainstorm
 
 * Integrate multiple APIs in one API call to make donating process concise
 
-* Transfer our UI design complished by NCR Design System Figma to Flutter application
+* Transfer our UI design accomplished by NCR Design System Figma to Flutter application
 
 * Make API calls in Flutter
 
 ## Accomplishments that we're proud of
 
-We came up the idea that build and implemted the project in such a short period. Although we met a lot of challenges and difficulties, finally we over came it by discussing in the group, searching online and consulting to the mentors. In the end each group member felt they gained a lot from the hackathon.   
+We came up with the idea and implemented the project in such a short period. Although a lot of challenges and difficulties came up during the developing process, we overcame them shortly by discussing in the group, searching online, and consulting with the mentors. Plenty of new tools are introduced from the workshops and sponsors, we quickly got familiar with them and applied them to our project. As students, we are proud of our strong self-learning ability. In the end, everyone felt they gained a lot from the hackathon.
 
-Our application build the future by connecting small businesses to users and to the community. It can be generalized to organizations other than small businesses.
+In the project aspect, our application has the ability to build the future by connecting small businesses to users and to the community. It can be generalized to organizations other than small businesses thus has the potential to help the entire society.
 
 ## What we learned
 
 * NCR APIs and security using hashing
 
-* Retrieving useful informations using NCR APIs
+* Retrieve useful information using NCR APIs
 
 * Design and implement Restful API for a frontend application
 
@@ -62,7 +61,7 @@ Our application build the future by connecting small businesses to users and to 
 
 ## What's next for The Giving App
 
-* Add more functions in our app
+* Add more functions to our app
 * Beautify the UI of our app
-* Pubish it so that it can truly help our communities and samll bussiness
+* Publish it so that it can truly help our communities and small business
 * ...
